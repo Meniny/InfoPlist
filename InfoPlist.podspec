@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "InfoPlist"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "A Info.plist assistant for Cocoa/Cocoa Touch."
 
   s.homepage         = "https://github.com/Meniny/InfoPlist"

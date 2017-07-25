@@ -113,6 +113,73 @@ public extension InfoPlist {
     }
 }
 
+// MARK: - Version Comparison
+public extension InfoPlist {
+
+    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    ///
+    /// - Parameters:
+    ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
+    ///   - rhs: Second version string
+    /// - Returns: Compare result
+    public static func compare(version lhs: String?, with rhs: String) -> ComparisonResult {
+        guard !rhs.isEmpty else {
+            return .orderedDescending
+        }
+        return (lhs ?? InfoPlist.version).compare(rhs, options: .numeric, range: rhs.range(of: rhs), locale: nil)
+    }
+    
+    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    ///
+    /// - Parameters:
+    ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
+    ///   - rhs: Second version string
+    /// - Returns: If `lhs` is equal to `rhs`
+    public static func version(_ lhs: String?, equalTo rhs: String) -> Bool {
+        return compare(version: lhs, with: rhs) == .orderedSame
+    }
+    
+    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    ///
+    /// - Parameters:
+    ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
+    ///   - rhs: Second version string
+    /// - Returns: If `lhs` is greater than `rhs`
+    public static func version(_ lhs: String?, greaterThan rhs: String) -> Bool {
+        return compare(version: lhs, with: rhs) == .orderedDescending
+    }
+    
+    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    ///
+    /// - Parameters:
+    ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
+    ///   - rhs: Second version string
+    /// - Returns: If `lhs` is less than `rhs`
+    public static func version(_ lhs: String?, lessThan rhs: String) -> Bool {
+        return compare(version: lhs, with: rhs) == .orderedAscending
+    }
+    
+    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    ///
+    /// - Parameters:
+    ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
+    ///   - rhs: Second version string
+    /// - Returns: If `lhs` is greater than or equal to `rhs`
+    public static func version(_ lhs: String?, greaterThanOrEqualTo rhs: String) -> Bool {
+        return compare(version: lhs, with: rhs) != .orderedAscending
+    }
+    
+    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    ///
+    /// - Parameters:
+    ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
+    ///   - rhs: Second version string
+    /// - Returns: If `lhs` is less than or equal to `rhs`
+    public static func version(_ lhs: String?, lessThanOrEqualTo rhs: String) -> Bool {
+        return compare(version: lhs, with: rhs) != .orderedDescending
+    }
+}
+
 #if os(iOS)
 // MARK: - iOS Only
 public extension InfoPlist {
