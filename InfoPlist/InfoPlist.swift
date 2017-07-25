@@ -116,7 +116,7 @@ public extension InfoPlist {
 // MARK: - Version Comparison
 public extension InfoPlist {
 
-    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    /// Compare tow version string (eg: `1.0.0`, `2.0.1`, `3.0`)
     ///
     /// - Parameters:
     ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
@@ -129,7 +129,7 @@ public extension InfoPlist {
         return (lhs ?? InfoPlist.version).compare(rhs, options: .numeric, range: rhs.range(of: rhs), locale: nil)
     }
     
-    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    /// Compare tow version string (eg: `1.0.0`, `2.0.1`, `3.0`)
     ///
     /// - Parameters:
     ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
@@ -139,7 +139,7 @@ public extension InfoPlist {
         return compare(version: lhs, with: rhs) == .orderedSame
     }
     
-    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    /// Compare tow version string (eg: `1.0.0`, `2.0.1`, `3.0`)
     ///
     /// - Parameters:
     ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
@@ -149,7 +149,7 @@ public extension InfoPlist {
         return compare(version: lhs, with: rhs) == .orderedDescending
     }
     
-    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    /// Compare tow version string (eg: `1.0.0`, `2.0.1`, `3.0`)
     ///
     /// - Parameters:
     ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
@@ -159,7 +159,7 @@ public extension InfoPlist {
         return compare(version: lhs, with: rhs) == .orderedAscending
     }
     
-    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    /// Compare tow version string (eg: `1.0.0`, `2.0.1`, `3.0`)
     ///
     /// - Parameters:
     ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
@@ -169,7 +169,7 @@ public extension InfoPlist {
         return compare(version: lhs, with: rhs) != .orderedAscending
     }
     
-    /// Compare tow version string (eg: `1.0.0`, '2.0.1', '3.0')
+    /// Compare tow version string (eg: `1.0.0`, `2.0.1`, `3.0`)
     ///
     /// - Parameters:
     ///   - lhs: First version string, set to `nil` to use `InfoPlist.version`
