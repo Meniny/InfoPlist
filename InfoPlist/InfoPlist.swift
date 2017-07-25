@@ -281,11 +281,13 @@ public extension InfoPlist {
 // MARK: - iOS 9 or macOS 10.11
 public extension InfoPlist {
     
+    /// NSAppTransportSecurity
     @available(iOS 9.0, OSX 10.11, *)
     public static var appTransportSecurityConfiguration: [String: Any]? = {
         return InfoPlist.getValue(forKey: "NSAppTransportSecurity") as? [String: Any]
     }()
     
+    /// NSAllowsArbitraryLoads
     @available(iOS 9.0, OSX 10.11, *)
     public static var allowsArbitraryLoads: Bool = {
         guard let infoDictionary = InfoPlist.appTransportSecurityConfiguration else {
@@ -293,7 +295,9 @@ public extension InfoPlist {
         }
         return (infoDictionary["NSAllowsArbitraryLoads"] as? Bool) ?? false
     }()
+    
     #if os(iOS)
+    /// UIRequiresFullScreen
     @available(iOS 9.0, *)
     public static var requiresFullScreen: Bool = {
         return InfoPlist.getBool(forKey: "UIRequiresFullScreen")
