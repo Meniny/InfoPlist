@@ -1,0 +1,16 @@
+PODS:
+  - InfoPlist (1.0.0)
+
+DEPENDENCIES:
+  - InfoPlist (from `../`)
+
+EXTERNAL SOURCES:
+  InfoPlist:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  InfoPlist: a9457b07e6d1bc87c1302c5c6123519e351636e6
+
+PODFILE CHECKSUM: 0d9d1ad2c50c7ee10480f21d0d52fe2e37ccf2c4
+
+COCOAPODS: 1.2.1

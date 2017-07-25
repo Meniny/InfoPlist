@@ -1,0 +1,6 @@
+framework module InfoPlist {
+  umbrella header "InfoPlist-umbrella.h"
+
+  export *
+  module * { export * }
+}
