@@ -1,6 +1,6 @@
 ## Introduction
 
-`InfoPlist` is a Info.plist assistant for Cocoa/Cocoa Touch.
+`InfoPlist` is an `Info.plist` assistant for Cocoa/Cocoa Touch.
 
 ## Requirements
 
