@@ -8,7 +8,7 @@
 * watchOS 2.0+
 * tvOS 9.0+
 * macOS 10.10+
-* Xcode 8 with Swift 3
+* Xcode 9 with Swift 4
 
 ## Installation
 
