@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "InfoPlist.h"
 
 FOUNDATION_EXPORT double InfoPlistVersionNumber;
 FOUNDATION_EXPORT const unsigned char InfoPlistVersionString[];

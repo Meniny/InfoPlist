@@ -1,16 +1,16 @@
 PODS:
-  - InfoPlist (1.0.0)
+  - InfoPlist (1.2.0)
 
 DEPENDENCIES:
   - InfoPlist (from `../`)
 
 EXTERNAL SOURCES:
   InfoPlist:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  InfoPlist: a9457b07e6d1bc87c1302c5c6123519e351636e6
+  InfoPlist: 845eeba883b9d43b9e6570dc1a4ac25a0ed4d96d
 
-PODFILE CHECKSUM: 0d9d1ad2c50c7ee10480f21d0d52fe2e37ccf2c4
+PODFILE CHECKSUM: 9566c3355267ab1e0f216bff1bbbe79e2a3edecd
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
