@@ -53,43 +53,43 @@ public class InfoPlist {
 // MARK: - Common
 public extension InfoPlist {
     /// CFBundleDisplayName
-    public static var bundleDisplayName: String = {
+    static var bundleDisplayName: String = {
         return InfoPlist.getStringValue(forKey: "CFBundleDisplayName")
     }()
     
     /// CFBundleName
-    public static var bundleName: String = {
+    static var bundleName: String = {
         return InfoPlist.getStringValue(forKey: "CFBundleName")
         
     }()
     
     /// Return CFBundleDisplayName if not empty, otherwise return CFBundleName
-    public static var name: String = {
+    static var name: String = {
         return !bundleDisplayName.isEmpty ? bundleDisplayName : bundleName
     }()
     
     /// CFBundleShortVersionString
-    public static var version: String = {
+    static var version: String = {
         return InfoPlist.getStringValue(forKey: "CFBundleShortVersionString")
     }()
     
     /// CFBundleVersion
-    public static var build: String = {
+    static var build: String = {
         return InfoPlist.getStringValue(forKey: "CFBundleVersion")
     }()
     
     /// CFBundleExecutable
-    public static var executable: String = {
+    static var executable: String = {
         return InfoPlist.getStringValue(forKey: "CFBundleExecutable")
     }()
     
     /// CFBundleIdentifier
-    public static var bundleIndentifier: String = {
+    static var bundleIndentifier: String = {
         return InfoPlist.getStringValue(forKey: "CFBundleIdentifier")
     }()
     
     /// CFBundleURLTypes.first[CFBundleURLSchemes]
-    public static var schemes: [String] = {
+    static var schemes: [String] = {
         guard let urlTypes = InfoPlist.getValue(forKey: "CFBundleURLTypes") as? [AnyObject],
             let urlType = urlTypes.first as? [String : AnyObject],
             let urlSchemes = urlType["CFBundleURLSchemes"] as? [String] else {
@@ -100,12 +100,12 @@ public extension InfoPlist {
     }()
     
     /// Main Scheme String, could be `nil`
-    public static var mainScheme: String? = {
+    static var mainScheme: String? = {
         return schemes.first
     }()
     
     /// if `zh-Hans` is one of the preferred languages
-    public static var usingChinese: Bool {
+    static var usingChinese: Bool {
         if let l = NSLocale.preferredLanguages.first {
             return l.contains("zh-Hans")
         }
@@ -122,7 +122,7 @@ public extension InfoPlist {
     ///   - lhs: First version string
     ///   - rhs: Second version string
     /// - Returns: Compare result
-    public static func compare(version lhs: String, with rhs: String) -> ComparisonResult {
+    static func compare(version lhs: String, with rhs: String) -> ComparisonResult {
         guard !lhs.isEmpty else {
             if rhs.isEmpty {
                 return .orderedSame
@@ -142,7 +142,7 @@ public extension InfoPlist {
     ///   - lhs: First version string
     ///   - rhs: Second version string
     /// - Returns: If `lhs` is equal to `rhs`
-    public static func version(_ lhs: String, equalTo rhs: String) -> Bool {
+    static func version(_ lhs: String, equalTo rhs: String) -> Bool {
         return compare(version: lhs, with: rhs) == .orderedSame
     }
     
@@ -152,7 +152,7 @@ public extension InfoPlist {
     ///   - lhs: First version string
     ///   - rhs: Second version string
     /// - Returns: If `lhs` is greater than `rhs`
-    public static func version(_ lhs: String, greaterThan rhs: String) -> Bool {
+    static func version(_ lhs: String, greaterThan rhs: String) -> Bool {
         return compare(version: lhs, with: rhs) == .orderedDescending
     }
     
@@ -162,7 +162,7 @@ public extension InfoPlist {
     ///   - lhs: First version string
     ///   - rhs: Second version string
     /// - Returns: If `lhs` is less than `rhs`
-    public static func version(_ lhs: String, lessThan rhs: String) -> Bool {
+    static func version(_ lhs: String, lessThan rhs: String) -> Bool {
         return compare(version: lhs, with: rhs) == .orderedAscending
     }
     
@@ -172,7 +172,7 @@ public extension InfoPlist {
     ///   - lhs: First version string
     ///   - rhs: Second version string
     /// - Returns: If `lhs` is greater than or equal to `rhs`
-    public static func version(_ lhs: String, greaterThanOrEqualTo rhs: String) -> Bool {
+    static func version(_ lhs: String, greaterThanOrEqualTo rhs: String) -> Bool {
         return compare(version: lhs, with: rhs) != .orderedAscending
     }
     
@@ -182,7 +182,7 @@ public extension InfoPlist {
     ///   - lhs: First version string
     ///   - rhs: Second version string
     /// - Returns: If `lhs` is less than or equal to `rhs`
-    public static func version(_ lhs: String, lessThanOrEqualTo rhs: String) -> Bool {
+    static func version(_ lhs: String, lessThanOrEqualTo rhs: String) -> Bool {
         return compare(version: lhs, with: rhs) != .orderedDescending
     }
 }
@@ -193,25 +193,25 @@ public extension InfoPlist {
     
     /// UIFileSharingEnabled
     @available(iOS 7.0, *)
-    public static var iTunesFileSharingEnabled: Bool = {
+    static var iTunesFileSharingEnabled: Bool = {
         return InfoPlist.getBool(forKey: "UIFileSharingEnabled")
     }()
     
     /// UIStatusBarHidden
     @available(iOS 7.0, *)
-    public static var isStatusBarHidden: Bool = {
+    static var isStatusBarHidden: Bool = {
         return InfoPlist.getBool(forKey: "UIStatusBarHidden")
     }()
     
     /// UIStatusBarStyle
     @available(iOS 7.0, *)
-    public static var statusBarStyleString: String? = {
+    static var statusBarStyleString: String? = {
         return InfoPlist.getString(forKey: "UIStatusBarStyle")
     }()
     
     /// UIStatusBarStyle
     @available(iOS 7.0, *)
-    public static var statusBarStyle: UIStatusBarStyle? = {
+    static var statusBarStyle: UIStatusBarStyle? = {
         guard let style = InfoPlist.statusBarStyleString else {
             return nil
         }
@@ -227,31 +227,31 @@ public extension InfoPlist {
     
     /// UIViewControllerBasedStatusBarAppearance
     @available(iOS 7.0, *)
-    public static var viewControllerBasedStatusBarAppearance: Bool = {
+    static var viewControllerBasedStatusBarAppearance: Bool = {
         return InfoPlist.getBool(forKey: "UIViewControllerBasedStatusBarAppearance")
     }()
     
     /// UISupportedInterfaceOrientations
     @available(iOS 7.0, *)
-    public static var iPhoneSupportedInterfaceOrientationStrings: [String] = {
+    static var iPhoneSupportedInterfaceOrientationStrings: [String] = {
         (InfoPlist.getValue(forKey: "UISupportedInterfaceOrientations") as? [String]) ?? []
     }()
     
     /// UISupportedInterfaceOrientations
     @available(iOS 7.0, *)
-    public static var iPhoneSupportedInterfaceOrientations: [UIInterfaceOrientation] = {
+    static var iPhoneSupportedInterfaceOrientations: [UIInterfaceOrientation] = {
         return InfoPlist.supportedInterfaceOrientations(of: InfoPlist.iPhoneSupportedInterfaceOrientationStrings)
     }()
     
     /// UISupportedInterfaceOrientations~ipad
     @available(iOS 7.0, *)
-    public static var iPadSupportedInterfaceOrientationStrings: [String] = {
+    static var iPadSupportedInterfaceOrientationStrings: [String] = {
         return (InfoPlist.getValue(forKey: "UISupportedInterfaceOrientations~ipad") as? [String]) ?? []
     }()
     
     /// UISupportedInterfaceOrientations~ipad
     @available(iOS 7.0, *)
-    public static var iPadSupportedInterfaceOrientations: [UIInterfaceOrientation] = {
+    static var iPadSupportedInterfaceOrientations: [UIInterfaceOrientation] = {
         return InfoPlist.supportedInterfaceOrientations(of: InfoPlist.iPadSupportedInterfaceOrientationStrings)
     }()
     
@@ -290,13 +290,13 @@ public extension InfoPlist {
     
     /// NSAppTransportSecurity
     @available(iOS 9.0, OSX 10.11, *)
-    public static var appTransportSecurityConfiguration: [String: Any]? = {
+    static var appTransportSecurityConfiguration: [String: Any]? = {
         return InfoPlist.getValue(forKey: "NSAppTransportSecurity") as? [String: Any]
     }()
     
     /// NSAllowsArbitraryLoads
     @available(iOS 9.0, OSX 10.11, *)
-    public static var allowsArbitraryLoads: Bool = {
+    static var allowsArbitraryLoads: Bool = {
         guard let infoDictionary = InfoPlist.appTransportSecurityConfiguration else {
             return false
         }
@@ -306,7 +306,7 @@ public extension InfoPlist {
     #if os(iOS)
     /// UIRequiresFullScreen
     @available(iOS 9.0, *)
-    public static var requiresFullScreen: Bool = {
+    static var requiresFullScreen: Bool = {
         return InfoPlist.getBool(forKey: "UIRequiresFullScreen")
     }()
     #endif
@@ -317,109 +317,109 @@ public extension InfoPlist {
     
     /// Privacy - NSBluetoothPeripheralUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var bluetoothPeripheralUsageDescription: String? = {
+    static var bluetoothPeripheralUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSBluetoothPeripheralUsageDescription")
     }()
     
     /// Privacy - NSCalendarsUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var calendarsUsageDescription: String? = {
+    static var calendarsUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSCalendarsUsageDescription")
     }()
     
     /// Privacy - NSCameraUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var cameraUsageDescription: String? = {
+    static var cameraUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSCameraUsageDescription")
     }()
     
     /// Privacy - NSContactsUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var contactsUsageDescription: String? = {
+    static var contactsUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSContactsUsageDescription")
     }()
     
     /// Privacy - NSHealthShareUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var healthShareUsageDescription: String? = {
+    static var healthShareUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSHealthShareUsageDescription")
     }()
     
     /// Privacy - NSHealthUpdateUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var healthUpdateUsageDescription: String? = {
+    static var healthUpdateUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSHealthUpdateUsageDescription")
     }()
     
     /// Privacy - NSHomeKitUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var homeKitUsageDescription: String? = {
+    static var homeKitUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSHomeKitUsageDescription")
     }()
     
     /// Privacy - NSLocationAlwaysUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var locationAlwaysUsageDescription: String? = {
+    static var locationAlwaysUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSLocationAlwaysUsageDescription")
     }()
     
     /// Privacy - NSLocationUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var locationUsageDescription: String? = {
+    static var locationUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSLocationUsageDescription")
     }()
     
     /// Privacy - NSLocationWhenInUseUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var locationWhenInUseUsageDescription: String? = {
+    static var locationWhenInUseUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSLocationWhenInUseUsageDescription")
     }()
     
     /// Privacy - NSAppleMusicUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var appleMusicUsageDescription: String? = {
+    static var appleMusicUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSAppleMusicUsageDescription")
     }()
     
     /// Privacy - NSMicrophoneUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var microphoneUsageDescription: String? = {
+    static var microphoneUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSMicrophoneUsageDescription")
     }()
     
     /// Privacy - NSMotionUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var motionUsageDescription: String? = {
+    static var motionUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSMotionUsageDescription")
     }()
     
     /// Privacy - NSPhotoLibraryUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var photoLibraryUsageDescription: String? = {
+    static var photoLibraryUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSPhotoLibraryUsageDescription")
     }()
     
     /// Privacy - NSRemindersUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var remindersUsageDescription: String? = {
+    static var remindersUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSRemindersUsageDescription")
     }()
     
     /// Privacy - NSSiriUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var siriUsageDescription: String? = {
+    static var siriUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSSiriUsageDescription")
     }()
     
     /// Privacy - NSSpeechRecognitionUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var speechRecognitionUsageDescription: String? = {
+    static var speechRecognitionUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSSpeechRecognitionUsageDescription")
     }()
     
     /// Privacy - NSVideoSubscriberAccountUsageDescription
     @available(iOS 10.0, OSX 10.12, *)
-    public static var videoSubscriberAccountUsageDescription: String? = {
+    static var videoSubscriberAccountUsageDescription: String? = {
         return InfoPlist.getString(forKey: "NSVideoSubscriberAccountUsageDescription")
     }()
     
